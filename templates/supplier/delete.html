@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-danger text-white">
+
+        <h4>Hapus Supplier</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <p>
+
+            Apakah Anda yakin ingin menghapus supplier
+
+            <strong>{{ supplier.company }}</strong>?
+
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger">
+                Ya, Hapus
+            </button>
+
+            <a href="{% url 'supplier_list' %}" class="btn btn-secondary">
+                Batal
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-header bg-danger text-white">
+
+<h4>Hapus Barang Keluar</h4>
+
+</div>
+
+<div class="card-body">
+
+<p>
+
+Yakin ingin menghapus transaksi ini?
+
+</p>
+
+<table class="table">
+
+<tr>
+
+<th>Product</th>
+
+<td>{{ stockout.product }}</td>
+
+</tr>
+
+<tr>
+
+<th>Penerima</th>
+
+<td>{{ stockout.receiver }}</td>
+
+</tr>
+
+<tr>
+
+<th>Jumlah</th>
+
+<td>{{ stockout.quantity }}</td>
+
+</tr>
+
+</table>
+
+<form method="post">
+
+{% csrf_token %}
+
+<button class="btn btn-danger">
+
+Ya Hapus
+
+</button>
+
+<a href="{% url 'stockout_list' %}" class="btn btn-secondary">
+
+Batal
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

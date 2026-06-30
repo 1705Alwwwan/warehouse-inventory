@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+
+        <h4>{{ title }}</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Nama Barang</label>
+
+                        {{ form.name }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Kategori</label>
+
+                        {{ form.category }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Supplier</label>
+
+                        {{ form.supplier }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Status</label>
+
+                        {{ form.status }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Harga Beli</label>
+
+                        {{ form.purchase_price }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="mb-3">
+
+                        <label>Harga Jual</label>
+
+                        {{ form.selling_price }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="mb-3">
+
+                        <label>Stock</label>
+
+                        {{ form.stock }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="mb-3">
+
+                        <label>Minimum Stock</label>
+
+                        {{ form.minimum_stock }}
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="mb-3">
+
+                        <label>Rak</label>
+
+                        {{ form.rack }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Foto Barang</label>
+
+                {{ form.image }}
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Deskripsi</label>
+
+                {{ form.description }}
+
+            </div>
+
+            <button class="btn btn-success">
+
+                Simpan
+
+            </button>
+
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">
+
+                Kembali
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

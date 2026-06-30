@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-primary">
+
+<div class="container-fluid">
+
+<a class="navbar-brand">
+
+Inventory Gudang
+
+</a>
+
+<div>
+
+<span class="text-white me-3">
+
+{{ request.user }}
+
+</span>
+
+<form action="{% url 'logout' %}" method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-light btn-sm">
+        Logout
+    </button>
+</form>
+
+</div>
+
+</div>
+
+</nav>

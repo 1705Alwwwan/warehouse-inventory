@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Hapus Kategori</h3>
+<p>
+Yakin ingin menghapus
+<b>{{ category.name }}</b>?
+</p>
+<form method="post">
+{% csrf_token %}
+<button class="btn btn-danger">
+Ya Hapus
+</button>
+<a href="{% url 'category_list' %}"
+class="btn btn-secondary">
+Batal
+</a>
+</form>
+{% endblock %}

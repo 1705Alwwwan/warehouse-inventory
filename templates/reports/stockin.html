@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-3">Laporan Barang Masuk</h3>
+
+<div class="card shadow mb-3">
+
+<div class="card-body">
+
+<form method="get">
+
+<div class="row g-2">
+
+<div class="col-md-2">
+<input type="date" name="start_date"
+class="form-control"
+value="{{ start_date }}">
+</div>
+
+<div class="col-md-2">
+<input type="date" name="end_date"
+class="form-control"
+value="{{ end_date }}">
+</div>
+
+<div class="col-md-2">
+
+<select name="supplier"
+class="form-select">
+
+<option value="">Semua Supplier</option>
+
+{% for s in suppliers %}
+
+<option value="{{ s.id }}"
+{% if selected_supplier == s.id|stringformat:"s" %}selected{% endif %}>
+
+{{ s.company }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<select name="product"
+class="form-select">
+
+<option value="">Semua Product</option>
+
+{% for p in products %}
+
+<option value="{{ p.id }}"
+{% if selected_product == p.id|stringformat:"s" %}selected{% endif %}>
+
+{{ p.name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-3">
+
+<input
+type="text"
+name="q"
+class="form-control"
+placeholder="Invoice / Product"
+value="{{ keyword }}">
+
+</div>
+
+<div class="col-md-1 d-grid">
+
+<button class="btn btn-primary">
+
+Cari
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Tanggal</th>
+
+<th>Invoice</th>
+
+<th>Product</th>
+
+<th>Supplier</th>
+
+<th>Qty</th>
+
+<th>Harga</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in stockins %}
+
+<tr>
+
+<td>{{ item.date }}</td>
+
+<td>{{ item.invoice }}</td>
+
+<td>{{ item.product }}</td>
+
+<td>{{ item.supplier }}</td>
+
+<td>{{ item.quantity }}</td>
+
+<td>Rp {{ item.price }}</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="6"
+class="text-center">
+
+Tidak ada data.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

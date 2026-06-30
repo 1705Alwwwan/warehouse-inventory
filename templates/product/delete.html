@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-danger text-white">
+
+        <h4>Hapus Product</h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <p>
+
+            Yakin ingin menghapus product
+
+            <strong>{{ product.name }}</strong> ?
+
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <button class="btn btn-danger">
+
+                Ya Hapus
+
+            </button>
+
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">
+
+                Batal
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

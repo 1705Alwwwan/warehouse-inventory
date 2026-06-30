@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+Dashboard Inventory
+
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-primary text-white shadow">
+
+            <div class="card-body">
+
+                <h6>Total Product</h6>
+
+                <h2>{{ total_product }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-success text-white shadow">
+
+            <div class="card-body">
+
+                <h6>Total Supplier</h6>
+
+                <h2>{{ total_supplier }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-info text-white shadow">
+
+            <div class="card-body">
+
+                <h6>Total Barang Masuk</h6>
+
+                <h2>{{ total_stockin }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-warning shadow">
+
+            <div class="card-body">
+
+                <h6>Total Barang Keluar</h6>
+
+                <h2>{{ total_stockout }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-dark text-white shadow">
+
+            <div class="card-body">
+
+                <h6>Total Stock</h6>
+
+                <h2>{{ total_stock }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card bg-danger text-white shadow">
+
+            <div class="card-body">
+
+                <h6>Stock Menipis</h6>
+
+                <h2>{{ low_stock_count }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+<div class="card-header">
+
+Produk Stock Menipis
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Kode</th>
+
+<th>Nama</th>
+
+<th>Stock</th>
+
+<th>Minimum</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for product in low_stock %}
+
+<tr>
+
+<td>{{ product.code }}</td>
+
+<td>{{ product.name }}</td>
+
+<td>
+
+<span class="badge bg-danger">
+
+{{ product.stock }}
+
+</span>
+
+</td>
+
+<td>{{ product.minimum_stock }}</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="4" class="text-center">
+
+Semua stock masih aman.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

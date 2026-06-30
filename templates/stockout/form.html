@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-header">
+
+<h4>{{ title }}</h4>
+
+</div>
+
+<div class="card-body">
+
+<form method="post">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Product</label>
+
+{{ form.product }}
+
+</div>
+
+<div class="mb-3">
+
+<label>Jumlah</label>
+
+{{ form.quantity }}
+
+</div>
+
+<div class="mb-3">
+
+<label>Invoice</label>
+
+{{ form.invoice }}
+
+</div>
+
+<div class="mb-3">
+
+<label>Penerima</label>
+
+{{ form.receiver }}
+
+</div>
+
+<div class="mb-3">
+
+<label>Tanggal</label>
+
+{{ form.date }}
+
+</div>
+
+<div class="mb-3">
+
+<label>Catatan</label>
+
+{{ form.note }}
+
+</div>
+
+<button class="btn btn-success">
+
+Simpan
+
+</button>
+
+<a href="{% url 'stockout_list' %}" class="btn btn-secondary">
+
+Kembali
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

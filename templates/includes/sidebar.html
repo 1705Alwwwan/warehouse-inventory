@@ -1,0 +1,106 @@
+<nav class="col-md-2 bg-light border-end vh-100">
+
+    <div class="pt-3">
+
+        <ul class="nav flex-column">
+
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a href="{% url 'dashboard' %}"
+                   class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <hr>
+
+            <li class="nav-item">
+                <span class="ms-3 text-muted fw-bold">
+                    MASTER
+                </span>
+            </li>
+
+            <!-- Category -->
+            <li class="nav-item">
+                <a href="{% url 'category_list' %}"
+                   class="nav-link {% if request.resolver_match.url_name == 'category_list' %}active{% endif %}">
+                    <i class="bi bi-tags"></i>
+                    Kategori
+                </a>
+            </li>
+
+            <!-- Supplier -->
+            <li class="nav-item">
+                <a href="{% url 'supplier_list' %}"
+                   class="nav-link {% if request.resolver_match.url_name == 'supplier_list' %}active{% endif %}">
+                    <i class="bi bi-truck"></i>
+                    Supplier
+                </a>
+            </li>
+
+            <!-- Product -->
+            <li class="nav-item">
+                <a href="{% url 'product_list' %}"
+                   class="nav-link {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}">
+                    <i class="bi bi-box-seam"></i>
+                    Product
+                </a>
+            </li>
+
+            <hr>
+
+            <li class="nav-item">
+                <span class="ms-3 text-muted fw-bold">
+                    TRANSAKSI
+                </span>
+            </li>
+
+            <!-- Barang Masuk -->
+            <li class="nav-item">
+                <a href="{% url 'stockin_list' %}" class="nav-link">
+                    <i class="bi bi-arrow-down-circle"></i>
+                    Barang Masuk
+                </a>
+            </li>
+
+            <!-- Barang Keluar -->
+            <li class="nav-item">
+                 <a href="{% url 'stockout_list' %}" class="nav-link">
+                    <i class="bi bi-arrow-up-circle"></i>
+                    Barang Keluar
+                </a>
+            </li>
+
+            <hr>
+
+            <li class="nav-item">
+                <span class="ms-3 text-muted fw-bold">
+                    LAPORAN
+                </span>
+            </li>
+
+            <li class="nav-item">
+            <a href="{% url 'report_stock' %}" class="nav-link">
+                <i class="bi bi-clipboard-data"></i>
+                Laporan Stock
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'report_stockin' %}" class="nav-link">
+                <i class="bi bi-clipboard-data"></i>
+                Laporan Barang Masuk 
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url 'report_stockout' %}" class="nav-link">
+                <i class="bi bi-clipboard-data"></i>
+                Laporan Barang Keluar 
+            </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>

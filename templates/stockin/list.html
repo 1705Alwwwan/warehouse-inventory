@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h3>Barang Masuk</h3>
+
+    <a href="{% url 'stockin_add' %}" class="btn btn-primary">
+
+        <i class="bi bi-plus-circle"></i>
+
+        Tambah Barang Masuk
+
+    </a>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="card shadow mb-3">
+
+    <div class="card-body">
+
+        <form method="get">
+
+            <div class="row g-2">
+
+                <div class="col-md-10">
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="q"
+                        placeholder="Cari berdasarkan invoice, product atau supplier..."
+                        value="{{ keyword }}">
+
+                </div>
+
+                <div class="col-md-2 d-grid">
+
+                    <button class="btn btn-primary">
+
+                        <i class="bi bi-search"></i>
+
+                        Cari
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th width="60">No</th>
+
+                    <th>Tanggal</th>
+
+                    <th>Invoice</th>
+
+                    <th>Product</th>
+
+                    <th>Supplier</th>
+
+                    <th class="text-center">Qty</th>
+
+                    <th>Harga</th>
+
+                    <th width="170">Aksi</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for stockin in stockins %}
+
+                <tr>
+
+                    <td>{{ forloop.counter }}</td>
+
+                    <td>{{ stockin.date }}</td>
+
+                    <td>
+
+                        <strong>{{ stockin.invoice }}</strong>
+
+                    </td>
+
+                    <td>{{ stockin.product }}</td>
+
+                    <td>{{ stockin.supplier }}</td>
+
+                    <td class="text-center">
+
+                        <span class="badge bg-success">
+
+                            {{ stockin.quantity }}
+
+                        </span>
+
+                    </td>
+
+                    <td>Rp {{ stockin.price }}</td>
+
+                    <td>
+
+                        <a href="{% url 'stockin_edit' stockin.id %}"
+                           class="btn btn-warning btn-sm">
+
+                            <i class="bi bi-pencil"></i>
+
+                        </a>
+
+                        <a href="{% url 'stockin_delete' stockin.id %}"
+                           class="btn btn-danger btn-sm">
+
+                            <i class="bi bi-trash"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="8" class="text-center">
+
+                        Tidak ada transaksi barang masuk.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
