@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: warehouse
+  namespace: apps
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: warehouse
+
+  template:
+    metadata:
+      labels:
+        app: warehouse
+
+    spec:
+      containers:
+      - name: warehouse
+
+        image: alwanfarhan/warehouse-inventory:latest
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8000
